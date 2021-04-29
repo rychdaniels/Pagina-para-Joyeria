@@ -1,0 +1,421 @@
+/* Definimos los estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definimos algunas variables que se usaran en difrentes elementos */
+:root {
+    --purple-dark: #170312;
+    --purple-medium: #33032d;
+    --purple-light: #531253;
+    --gray-light: #eaeaea;
+    --white: #f4fffd;
+}
+
+body {
+    /* Tamaño de la fuente */
+    font-size: 20px;
+    /* Tipo de letra que se vera en el HTML */
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    /* Los elementos parrafo tendran un tamaño de 20px */
+    font-size: 20px;
+ }
+
+/* ---------------------------------------------*/
+/* Header */
+/* ---------------------------------------------*/
+.contenido-header {
+    /* para que se muestre la imagen debemos darle un alto y ancho */
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/bg-girl.jpeg');
+    /* Centramos la imagen */
+    background-position: center;
+    /* Redimesionamos la imagen sin perder calidad */
+    background-size: cover;
+    /* Dejara la imagen o background pegado en la parte de arriba */
+    background-attachment: fixed;
+}
+
+/* Accedemos al elemento que tiene la clase .contenido-header y despues fondo */
+.contenido-header .fondo {
+    width: 0%;    
+    height: 100%;
+    max-width: 100%;
+    background-image: url(../img/bg-top.png);
+
+}
+
+.contenido-header .texto {
+    /* Usamos vw para que tome como referencia el naveagdor y no su contenedor y asi logra el efecto de las hojas.
+        Ademas usamos calc para desaparecer el scroll horizontal que aparecia. */
+    width: calc(100vw - 20px); 
+    height: 100vh;
+    font-size: 90px;
+    font-weight: 400;
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+    /* Para centrarlo usamos lo siguiente */
+    display: flex;
+    align-items: center;/* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    color: purple;
+    mix-blend-mode: multiply; /* Agrega una pequeña transparencia al texto */
+}
+
+/* ---------------------------------------------*/
+/* NAVBAR */
+/* ---------------------------------------------*/
+.menu {
+    /* Utilizamos la variable purple-medium para dar estilo al fondo del menu de navegacion */
+    background-color: var(--purple-medium);
+    width: 100%;
+    /* Para que se quede pegado en la parte de arriba */
+    position: sticky;
+    /* Lo situamos hasta arriba y con sticky se quedara pegado arriba tambien */
+    top: 0;
+    padding: 5px;
+    z-index: 999;
+    text-align: center;
+    /* Utilizaremos flexbox */
+    display: flex;
+    /* Centramos el contenido */
+    justify-content: center;
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+    margin-bottom: 60px;
+}
+
+/* Seleccionamos los elementos 'a' que se encuentran dentro de .menu */
+.menu a {
+    /* inline-block para poder modificar su padding */
+    display: inline-block;
+    /* 10px arriba y abajo, 30px a los lados */
+    padding: 10px 30x;
+    font-size: 26px;
+    /* Utilizamos la variables para dar el color */
+    background-color: var(--purple-medium);
+    /* 0px arriba y abajo, 10px a los lados */
+    margin: 0 10px;
+    /* Al momento de pasar encima de ellos esto permite que se vea mas estetico la transicion */
+    transition: .5s ease all;
+    /* Utilizamos la variables para dar el color */
+    color: var(--gray-light);
+    text-decoration: none;
+}
+
+/* Cada que se pase por encima de algun elemento del menu ese elemento se desplzara un poco hacia abajo */
+.menu a:hover {
+    /* Bajamos el menu en el eje Y 18px */
+    transform: translateY(18px);
+    background-color: var(--purple-light);
+}
+
+/* ---------------------------------------------*/
+/* Nosotros */
+/* ---------------------------------------------*/
+.nosotros {
+    margin-bottom: 60px;
+
+}
+
+.subtitulo {
+    font-size: 20px;
+    color: var(--purple-dark);
+    font-family: 'Noto Serif', serif;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Seleccionamos al elemento span en el cual su elemento contenedor tiene la clase subtitulo */
+.subtitulo span {
+    background-color: var(--gray-light);
+    padding: 0 15px;
+    z-index: 99;
+    /* relative para poder agregar la linea debajo de este span */
+    position: relative;
+}
+
+.subtitulo::after {
+    /* No agregamos contenido */
+    content: "";
+    /* Para poder manipularlo como su fuera un bloque */
+    display: inline-block;
+    /* Genera la linea de alto 2px */
+    height: 2px;
+    /* Genera la linea de ancho 100% */
+    width: 100%;
+    /* El color lo establecemos con la variable definida en :root */
+    background: var(--purple-dark);
+    /* Ayuda a que este elemento pierda su flujo en el html y pueda ubicarlo detras del subtitulo */
+    position: relative;
+    /* Sube el elemento */
+    top: -29px;
+    /* Ayuda a colocar la linea detras del subtitulo */
+    z-index: 1;
+}
+
+/* Selecciona al elemento .titulo que se encuentra dentro del .nosotros */
+.nosotros .titulo {
+    width: 70%;
+    font-size: 44px;
+    text-transform: uppercase;
+    /* inline-block para poder modificar su margin */
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+/* Selecciona al elemento enlance que se encuentra dentro de .nosotros */
+.nosotros .enlace {
+    /* inline-block para poder modificar su margin */
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--purple-light);
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+    /* Caundo este en el estado hover, la transicion se vera mas suave */
+    transition: .3s ease all;
+}
+
+/* Genera un efecto de agrandamiento en el texto al pasar el mouse sobre el */
+.nosotros .enlace:hover {
+    /* Le quita el subrayado */
+    text-decoration: none;
+    /* Aumenta el espacio entre letras */
+    letter-spacing: 3px;
+    /* Coloca un nuevo subrayado de otro color */
+    border-bottom: 1px solid var(--purple-light);
+}
+
+/* ---------------------------------------------*/
+/* Productos */
+/* ---------------------------------------------*/
+.productos {
+    background: var(--gray-light);
+    padding: 20px;
+    margin-bottom: 60px;
+
+}
+
+/* Selecciona al elemento .titulo que se encuentra dentro del .prodcutos */
+.productos .titulo {
+    width: 70%;
+    font-size: 44px;
+    text-transform: uppercase;
+    /* inline-block para poder modificar su margin */
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+/* Selecciona el elemento .producto que esta dentro de .productos*/
+.productos .producto {
+    /* relative para que pierda su espacio y podamos mostrar el overlay */
+    position: relative;
+    width: 100%;
+}
+
+.productos .overlay {
+    /* 0 porque si el producto no esta seleccionado no debe mostrarse */
+    width: 0%;
+    height: 100%;
+    /* absolute porque deseamos que se comporte y se coloque de acuerdo a su contenedor padre en este caso .producto*/
+    position: absolute;
+    /* Se quedan al comienzo de su contenedor padre(.producto) en la parte de abajo*/
+    bottom: 0;
+    /* Se quedan al comienzo de su contenedor padre(.producto) en la parte de la izquierda*/
+    left: 0;
+    /* Se quedan al comienzo de su contenedor padre(.producto) en la parte de la derecha*/
+    right: 0;
+    background: var(--purple-light);
+    /* Oculta el contenido que no se alcanza a mostrar en su contenedor */
+    overflow: hidden;
+    /* Cuando se encuentre en el estado :hover la transicion sera mas suave */
+    transition: .5s ease;
+}
+
+/* Cuando pasemos por encima de un producto, el overlay se mostrara */
+.productos .producto:hover .overlay {
+    width: 100%;
+    opacity: 0.8;
+}
+
+/* Selecciona el elemnto con la clase .overlay-texto que se encuentra 
+    dentro de .productos y luego dentro de .productos */
+.productos .producto .overlay-texto {
+    top: 50%;
+    left: 50%;
+    /* absolute para que top y left se basen en el contenedor de .overlay-text */
+    position: absolute;
+    /* Para que coloque el texto en una misma linea */
+    white-space: nowrap;
+    color: var(--white);
+    font-size: 18px;
+    /* Ayuda a centrar el texto */
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    /* Dibuja una linea en la prate superior */
+    border-top: 1px solid #fff;
+    /* Dibuja una linea en la prate inferior */
+    border-bottom: 1px solid #fff;
+}
+
+.productos .btn-productos {
+    background-color: var(--purple-light);
+    color: #fff;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: .3s ease;
+    max-width: 20%;
+}
+
+.productos .btn-productos:hover {
+    background-color: transparent;
+    border: 2px solid var(--purple-light);
+    color: var(--purple-light);
+}
+
+
+/* ---------------------------------------------*/
+/* Separador */
+/* ---------------------------------------------*/
+.separador {
+    width: 100%;
+    height: 250px;
+    background-image: url('../img/bg-separator.jpeg');
+    /* Centramos la imagen */
+    background-position: center;
+    /* Redimensionamos la imagen al tamaño de su contenedor sin perder calidad */
+    background-size: cover;
+    /* Dejamos la imagen fija */
+    background-attachment: fixed;
+    margin-bottom: 60px;
+}
+
+/* Seleccionamos el elemento 'p' que se encuentra dentro de .separador */
+.separador p {
+    height: 100%;
+    width: 100%;
+    /* Usaremos flexbox */
+    display: flex;
+    /* Centra verticalmente */
+    align-items: center;
+    /* Centra horizontalmente */
+    justify-content: center;
+    font-size: 24px;
+    font-family: 'Noto Serif', serif;
+    padding: 10px;
+
+}
+
+/* ---------------------------------------------*/
+/* Acerca de  */
+/* ---------------------------------------------*/
+.acerca-de {
+    margin-bottom: 60px;
+}
+
+/* ---------------------------------------------*/
+/* Galeria */
+/* ---------------------------------------------*/
+
+.galeria {
+    margin-bottom: 60px;
+}
+
+.galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------------------------------------------*/
+/* Contacto */
+/* ---------------------------------------------*/
+.contacto {
+    margin-bottom: 60x;
+}
+
+.contacto .contacto-img{
+    width: auto;
+}
+
+
+/* ---------------------------------------------*/
+/* Footer */
+/* ---------------------------------------------*/
+.redes-sociales {
+    padding: 10px;
+    background-color: var(--purple-light);
+}
+
+.redes-sociales img{
+    padding: 5px;
+    border-radius: 100%;
+    width: 50px;
+    transition: .3s ease all;
+}
+
+
+.redes-sociales img:hover{
+    /* Al pasar el mouse por encima hara los iconos mas grandes */
+    transform: scale(1.2);
+}
+
+
+/* ---------------------------------------------*/
+/* Mediqueries */
+/* ---------------------------------------------*/
+
+/* Para pantallas de 992px o menos */
+
+@media screen and (max-width: 992px) {
+ 
+    .fondo .texto {
+        font-size: 50px;
+    }
+
+    .productos .btn-productos {
+        font-size: 13px;
+        padding: 7px 8px;
+    }
+
+}
+
+/* Para pantallas de 415px o menos */
+@media screen and (max-width: 415px) {
+ 
+    .fondo .texto {
+        font-size: 30px;
+    }
+
+    .container .titulo {
+        font-size: 20px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .productos .btn-productos {
+        padding: 0;
+        font-size: 10px;
+    }
+
+    .separador q {
+        font-size: 16px;
+    }
+
+    .menu a { 
+        font-size: 18px;
+    }
+}
+
